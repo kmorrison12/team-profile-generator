@@ -126,7 +126,7 @@ const addEmployee = () => {
 }
 
 const createHTML = team => {
-    fs.writeFileSync('./dist/index.html', JSON.stringify(team), err => {
+    fs.writeFile('./dist/index.html', JSON.stringify(team), err => {
     if (err) {
         console.log(err)
     } else {
