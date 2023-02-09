@@ -5,7 +5,11 @@ const Engineer = require('./lib/engineer')
 const Intern  = require('./lib/intern')
 const renderHTML = require('./src/renderHTML')
 
-const team = ([])
+const team = []
+
+// const createHTML = () => {
+    
+// }
 
 // prompt for manager input then taken  to menu for entering an engineer or intern
 const addManager = () => {
@@ -120,20 +124,20 @@ const addEmployee = () => {
             case 'Intern':
                 addIntern()
             case "No additional employees to add":
-                createHTML()
+                // createHTML()
+                let teamData = renderHTML(team)
+                fs.writeFile('./dist/index.html', teamData, err => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        console.log('Your team profile has been generated.')
+                    }
+                })
         }
     })
 }
 
-const createHTML = team => {
-    fs.writeFile('./dist/index.html', JSON.stringify(team), err => {
-    if (err) {
-        console.log(err)
-    } else {
-        console.log('Your team profile has been generated.')
-    }
-    })
-}
+
 
 addManager()
 
